@@ -14,26 +14,26 @@ pipeline{
                 }
             }
         }
-        // stage('UNIT testing'){
+        stage('UNIT testing'){
             
-        //     steps{
+            steps{
                 
-        //         script{
+                script{
                     
-        //             sh 'mvn test'
-        //         }
-        //     }
-        // }
-        // stage('Integration testing'){
+                    sh 'mvn test'
+                }
+            }
+        }
+        stage('Integration testing'){
             
-        //     steps{
+            steps{
                 
-        //         script{
+                script{
                     
-        //             sh 'mvn verify -DskipUnitTests'
-        //         }
-        //     }
-        // }
+                    sh 'mvn verify -DskipUnitTests'
+                }
+            }
+        }
         stage('Maven build'){
             
             steps{
@@ -41,11 +41,11 @@ pipeline{
                 script{
 
 
-                    sh 'export MAVEN_HOME=/opt/maven'
-                    sh 'export PATH=$PATH:$MAVEN_HOME/bin'
-                    sh 'mvn --version'
-                    sh 'mvn clean package'
-                   // sh 'mvn clean install'
+                    // sh 'export MAVEN_HOME=/opt/maven'
+                    // sh 'export PATH=$PATH:$MAVEN_HOME/bin'
+                    // sh 'mvn --version'
+                    // sh 'mvn clean package'
+                   sh 'mvn clean install'
                 }
             }
         }
