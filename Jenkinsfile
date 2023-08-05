@@ -39,13 +39,10 @@ pipeline{
             steps{
                 
                 script{
-
-
-                    // sh 'export MAVEN_HOME=/opt/maven'
-                    // sh 'export PATH=$PATH:$MAVEN_HOME/bin'
-                    // sh 'mvn --version'
-                    // sh 'mvn clean package'
-                   sh 'mvn clean install'
+                    
+                 def mvnHome = tool name: 'Maven', type: 'maven' 
+                  sh "${mvnHome}/bin/mvn -B -DskipTests clean package"
+                   //sh 'mvn clean install'
                 }
             }
         }
