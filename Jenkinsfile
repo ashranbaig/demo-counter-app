@@ -40,7 +40,7 @@ pipeline{
                 
                 script{
                     
-def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven'
+def mvnHome = tool name: 'Maven', type: 'maven'
     sh "${mvnHome}/bin/mvn -B -DskipTests clean package"
                    //sh 'mvn clean install'
 
