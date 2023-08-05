@@ -39,7 +39,7 @@ pipeline{
             steps{
                 
                 script{
-                    
+                    sh 'mvn install'
                     sh 'mvn clean install'
                 }
             }
