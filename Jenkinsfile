@@ -56,7 +56,7 @@ pipeline{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                    withSonarQubeEnv(credentialsId: 'sonarfinal') {
                      def mvnHome = tool name: 'Maven', type: 'maven'
                     sh "${mvnHome}/bin/mvn -B -DskipTests clean package sonar:sonar"
 
