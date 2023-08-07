@@ -50,33 +50,33 @@ pipeline{
                 }
             }
         }
-        // stage('Static code analysis'){
+        stage('Static code analysis'){
             
-        //     steps{
+            steps{
                 
-        //         script{
+                script{
                     
-        //             withSonarQubeEnv(credentialsId: 'DemoFinal') {
-        //              def mvnHome = tool name: 'Maven', type: 'maven'
-        //             sh "${mvnHome}/bin/mvn -B -DskipTests clean package sonar:sonar"
+                    withSonarQubeEnv(credentialsId: 'DemoFinal') {
+                     def mvnHome = tool name: 'Maven', type: 'maven'
+                    sh "${mvnHome}/bin/mvn -B -DskipTests clean package sonar:sonar"
 
                         
-        //                // sh 'mvn clean package sonar:sonar'
-        //             }
-        //            }
+                       // sh 'mvn clean package sonar:sonar'
+                    }
+                   }
                     
-        //         }
-        //     }
-            // stage('Quality Gate Status'){
+                }
+            }
+            stage('Quality Gate Status'){
                 
-            //     steps{
+                steps{
                     
-            //         script{
+                    script{
                         
-            //             waitForQualityGate abortPipeline: false, credentialsId: 'DemoFinal'
-            //         }
-            //     }
-            // }
+                        waitForQualityGate abortPipeline: false, credentialsId: 'DemoFinal'
+                    }
+                }
+            }
 
 
         stage('Upload war file to nexus'){
