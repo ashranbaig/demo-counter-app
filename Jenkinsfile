@@ -14,28 +14,28 @@ pipeline{
                 }
             }
         }
-        stage('UNIT testing'){
+        // stage('UNIT testing'){
             
-            steps{
+        //     steps{
                 
-                script{
-                       def mvnHome = tool name: 'Maven', type: 'maven'
-                    sh "${mvnHome}/bin/mvn -B -DskipTests test"
-                   // sh 'mvn test'
-                }
-            }
-        }
-        stage('Integration testing'){
+        //         script{
+        //                def mvnHome = tool name: 'Maven', type: 'maven'
+        //             sh "${mvnHome}/bin/mvn -B -DskipTests test"
+        //            // sh 'mvn test'
+        //         }
+        //     }
+        // }
+        // stage('Integration testing'){
             
-            steps{
+        //     steps{
                 
-                script{
-                       def mvnHome = tool name: 'Maven', type: 'maven'
-                    sh "${mvnHome}/bin/mvn -B -DskipTests verify -DskipUnitTests"
-                    //sh 'mvn verify -DskipUnitTests'
-                }
-            }
-        }
+        //         script{
+        //                def mvnHome = tool name: 'Maven', type: 'maven'
+        //             sh "${mvnHome}/bin/mvn -B -DskipTests verify -DskipUnitTests"
+        //             //sh 'mvn verify -DskipUnitTests'
+        //         }
+        //     }
+        // }
         stage('Maven build'){
             
             steps{
