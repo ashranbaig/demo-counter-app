@@ -25,58 +25,58 @@ pipeline{
                 }
             }
         }
-        // stage('Integration testing'){
+        stage('Integration testing'){
             
-        //     steps{
+            steps{
                 
-        //         script{
-        //                def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-        //             sh "${mvnHome}/bin/mvn -B -DskipTests verify -DskipUnitTests"
-        //             //sh 'mvn verify -DskipUnitTests'
-        //         }
-        //     }
-        // }
-        // stage('Maven build'){
+                script{
+                       def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+                    sh "${mvnHome}/bin/mvn -B -DskipTests verify -DskipUnitTests"
+                    //sh 'mvn verify -DskipUnitTests'
+                }
+            }
+        }
+        stage('Maven build'){
             
-        //     steps{
+            steps{
                 
-        //         script{
+                script{
                     
-        //             def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-        //             sh "${mvnHome}/bin/mvn -B -DskipTests clean install"
-        //            //sh 'mvn clean install'
+                    def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+                    sh "${mvnHome}/bin/mvn -B -DskipTests clean install"
+                   //sh 'mvn clean install'
 
                     
-        //         }
-        //     }
-        // }
-        // stage('Static code analysis'){
+                }
+            }
+        }
+        stage('Static code analysis'){
             
-        //     steps{
+            steps{
                 
-        //         script{
+                script{
                     
-        //             withSonarQubeEnv(credentialsId: 'DemoFinal') {
-        //              def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-        //             sh "${mvnHome}/bin/mvn -B -DskipTests clean package sonar:sonar"
+                    withSonarQubeEnv(credentialsId: 'DemoFinal') {
+                     def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+                    sh "${mvnHome}/bin/mvn -B -DskipTests clean package sonar:sonar"
 
                         
-        //                // sh 'mvn clean package sonar:sonar'
-        //             }
-        //            }
+                       // sh 'mvn clean package sonar:sonar'
+                    }
+                   }
                     
-        //         }
-        //     }
-        //     stage('Quality Gate Status'){
+                }
+            }
+            stage('Quality Gate Status'){
                 
-        //         steps{
+                steps{
                     
-        //             script{
+                    script{
                         
-        //                 waitForQualityGate abortPipeline: false, credentialsId: 'DemoFinal'
-        //             }
-        //         }
-        //     }
+                        waitForQualityGate abortPipeline: false, credentialsId: 'DemoFinal'
+                    }
+                }
+            }
 
 
         stage('Upload war file to nexus'){
